@@ -1,1 +1,0 @@
-import{a3 as s,a4 as t,A as i}from"./BmhOPbPQ.js";import{a as n}from"./1jfWYQRI.js";const m=s(async()=>{let e,a;if(!([e,a]=t(()=>n.getSession()),e=await e,a(),e).data?.user)return i("/admin/login")});export{m as default};

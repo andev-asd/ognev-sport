@@ -1,1 +1,0 @@
-import{af as l,k as u}from"./BmhOPbPQ.js";const c=()=>{const{locale:t,setLocale:e}=l();return{lang:u(()=>t.value),setLang:n=>{e(n)},langLabel:{ua:"Українська",ru:"Русский",en:"English"}}},r=t=>{const{lang:e}=c();return{t:a=>t.find(n=>n.key===a&&n.lang===e.value)?.value??""}};export{c as a,r as u};

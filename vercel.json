@@ -1,6 +1,6 @@
 {
   "buildCommand": "npx prisma generate && nuxt build",
-  "framework": "nuxt",
+  "framework": "nuxtjs",
   "functions": {
     "server/**": {
       "maxDuration": 10

@@ -16,6 +16,8 @@ export const auth = betterAuth({
   trustedOrigins: [
     'http://localhost:3030',
     'http://localhost:3000',
+    'https://ognev-sport.vercel.app',
+    'https://ognevsport.in.ua',
     ...(process.env.BETTER_AUTH_URL ? [process.env.BETTER_AUTH_URL] : []),
   ],
   plugins: [

@@ -215,7 +215,7 @@ a{color:inherit;text-decoration:none}
 footer{background:var(--sf);border-top:1px solid var(--br);padding:28px}
 .ft-in{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .ft-brand{display:flex;flex-direction:column;gap:4px}
-.ft-logo{font-size:1rem;font-weight:800;color:var(--fg)}
+.ft-logo{height:28px;width:auto;display:block}
 .ft-cp{font-size:.75rem;color:var(--mu)}
 .ft-contacts{display:flex;gap:16px;flex-wrap:wrap}
 .ft-contact-link{font-size:.78rem;color:var(--mu);text-decoration:none;transition:color .15s}

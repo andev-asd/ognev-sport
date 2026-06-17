@@ -81,12 +81,9 @@
                 <img :src="heroBg" alt="hero bg" />
                 <button type="button" class="hero-bg-clear" @click="heroBg = ''">✕</button>
               </div>
-              <label v-else class="hero-bg-add" :class="{ uploading: uploadingBg }">
-                <input type="file" accept="image/*" :disabled="uploadingBg" @change="uploadBg" style="display:none" />
-                {{ uploadingBg ? '...' : '+ Фон' }}
-              </label>
+              <button v-else type="button" class="hero-bg-add" @click="bgPickerOpen = true">+ Фон</button>
             </div>
-            <p v-if="uploadBgError" style="color:#e85800;font-size:.75rem;margin-top:4px">{{ uploadBgError }}</p>
+            <MediaPickerModal v-model="bgPickerOpen" bucket="site" @select="urls => heroBg = urls[0]" />
           </div>
         </div>
       </div>
@@ -320,28 +317,7 @@ heroBg.value = (rawSettings.value as any[])?.find((r: any) => r.key === 'heroBg'
 
 watch([textMap, sections, heroImages, heroBg], () => { isDirty.value = true }, { deep: true })
 
-const uploadingBg = ref(false)
-const uploadBgError = ref('')
-const uploadBg = async (e: Event) => {
-  const file = (e.target as HTMLInputElement).files?.[0]
-  if (!file) return
-  uploadingBg.value = true
-  uploadBgError.value = ''
-  try {
-    const ext = file.name.split('.').pop()
-    const form = new FormData()
-    form.append('file', file)
-    form.append('bucket', 'site')
-    form.append('path', `hero-bg-${Date.now()}.${ext}`)
-    const res = await $fetch<{ url: string }>('/api/admin/upload', { method: 'POST', body: form })
-    heroBg.value = res.url
-  } catch (err: any) {
-    uploadBgError.value = err?.data?.message ?? err?.message ?? 'Помилка завантаження'
-  } finally {
-    uploadingBg.value = false
-    ;(e.target as HTMLInputElement).value = ''
-  }
-}
+const bgPickerOpen = ref(false)
 
 const saveAll = async () => {
   saving.value = true
